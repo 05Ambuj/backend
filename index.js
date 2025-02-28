@@ -64,7 +64,7 @@ dotenv.config();
 // ✅ Define allowed frontend URLs
 const allowedOrigins = [
   process.env.FRONTEND_URL || "http://localhost:5173",
-  "https://frontend-okf7j3957-ambujs-projects-36059ff2.vercel.app",
+  "https://frontend-dusky-seven-65.vercel.app"
 ];
 
 // ✅ Enable CORS middleware
