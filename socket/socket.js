@@ -83,8 +83,8 @@
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
+import dotenv from "dotenv";
 
 dotenv.config(); // Load environment variables
 
@@ -94,10 +94,10 @@ const server = http.createServer(app);
 // ✅ Define allowed frontend URLs
 const allowedOrigins = [
   process.env.FRONTEND_URL || "http://localhost:5173",
-  "https://frontend-okf7j3957-ambujs-projects-36059ff2.vercel.app", // Vercel frontend
+  "https://frontend-q2c22noqx-ambujs-projects-36059ff2.vercel.app",
 ];
 
-// ✅ Enable CORS middleware for Express routes
+// ✅ Enable CORS for Express API routes
 app.use(
   cors({
     origin: allowedOrigins,
@@ -105,6 +105,7 @@ app.use(
   })
 );
 
+// ✅ Fix CORS for Socket.io
 const io = new Server(server, {
   cors: {
     origin: (origin, callback) => {
@@ -119,7 +120,7 @@ const io = new Server(server, {
   },
 });
 
-// ✅ Store user socket mappings
+// Store user socket mappings
 const userSocketMap = {};
 
 export const getReciverSocketId = (receiverId) => {
@@ -144,3 +145,4 @@ io.on("connection", (socket) => {
 });
 
 export { io, server, app };
+
