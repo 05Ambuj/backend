@@ -3,7 +3,7 @@ import { User } from "../models/userModel.js";
 import { Messages } from "../models/messages.js";
 import TryCatch from "../utils/tryCatch.js";
 import e from "express";
-import { getReciverSocketId, io } from "../socket/socket.js";
+import { getReciverSocketId, io } from "../socket/socket.js"; 
 
 export const sendMessage = TryCatch(async (req, res) => {
     const { recieverId, message } = req.body
